@@ -2,7 +2,7 @@
 
 import requests
 from bs4 import BeautifulSoup as bs
-from pprint import pprint
+import pandas as pd
 
 url = 'https://hh.ru/'
 
@@ -46,9 +46,10 @@ while True:
                     salary_max = int(''.join(salary.split()[1:-1]))  # если "до"
                 else:
                     salary_min = salary[:(salary.find(' – '))]
-                    salary_max = ''.join(salary[((salary.rfind(' – ') + 3)):(salary.rfind(' '))])
+                    salary_max = ''.join(salary[(salary.rfind(' – ') + 3):(salary.rfind(' '))])
                     salary_min = int(''.join(salary_min.split()))  # минимальная зп
                     salary_max = int(''.join(salary_max.split()))  # максимальная зп
+
             except:
                 salary_min = None
                 salary_max = None
@@ -65,8 +66,6 @@ while True:
         params['page'] += 1
     else:
         break
-
-import pandas as pd
 
 df = pd.DataFrame(vacancy_list)
 
