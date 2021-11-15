@@ -5,6 +5,7 @@
 
 
 # useful for handling different item types with a single interface
+<<<<<<< HEAD
 import hashlib
 import scrapy
 from itemadapter import ItemAdapter
@@ -50,3 +51,12 @@ class LeroyPhotosPipeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None, *, item=None):
         image_guid = hashlib.sha1(bytes(request.url, encoding='utf8')).hexdigest()
         return f'{item["name"]}/{image_guid}.jpg'
+=======
+from itemadapter import ItemAdapter
+
+
+class DataImgPipeline:
+    def process_item(self, item, spider):
+        print()
+        return item
+>>>>>>> lesson_7
