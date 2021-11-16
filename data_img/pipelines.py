@@ -25,8 +25,8 @@ def price_convert(value):
 
 class DataImgPipeline:
     def __init__(self):
-        # client = MongoClient('localhost', 27017)
-        # self.mongo_base = client['leroymerlin']
+        client = MongoClient('localhost', 27017)
+        self.mongo_base = client['leroymerlin']
 
     def process_item(self, item, spider):
         collection = self.mongo_base[spider.name]
