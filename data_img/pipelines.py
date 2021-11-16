@@ -5,12 +5,12 @@
 
 
 # useful for handling different item types with a single interface
-<<<<<<< HEAD
+
 import hashlib
 import scrapy
 from itemadapter import ItemAdapter
 from scrapy.pipelines.images import ImagesPipeline
-from pymongo import MongoClient
+# from pymongo import MongoClient
 
 
 def price_convert(value):
@@ -24,14 +24,14 @@ def price_convert(value):
 
 
 class DataImgPipeline:
-    def __init__(self):
-        client = MongoClient('localhost', 27017)
-        self.mongo_base = client['leroymerlin']
+    # def __init__(self):
+    #     # client = MongoClient('localhost', 27017)
+    #     # self.mongo_base = client['leroymerlin']
 
     def process_item(self, item, spider):
-        collection = self.mongo_base[spider.name]
+        # collection = self.mongo_base[spider.name]
         item['price'] = price_convert(item['price'])
-        collection.update_one({'link': item['link']}, {'$set': item}, upsert=True)
+        # collection.update_one({'link': item['link']}, {'$set': item}, upsert=True)
         return item
 
 
@@ -51,12 +51,3 @@ class LeroyPhotosPipeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None, *, item=None):
         image_guid = hashlib.sha1(bytes(request.url, encoding='utf8')).hexdigest()
         return f'{item["name"]}/{image_guid}.jpg'
-=======
-from itemadapter import ItemAdapter
-
-
-class DataImgPipeline:
-    def process_item(self, item, spider):
-        print()
-        return item
->>>>>>> lesson_7

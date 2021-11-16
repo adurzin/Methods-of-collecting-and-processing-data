@@ -13,11 +13,8 @@ LOG_LEVEL = 'DEBUG'
 
 SPIDER_MODULES = ['data_img.spiders']
 NEWSPIDER_MODULE = 'data_img.spiders'
-<<<<<<< HEAD
 IMAGES_STORE = 'images'
-=======
 
->>>>>>> lesson_7
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)' \
@@ -32,23 +29,15 @@ CONCURRENT_REQUESTS = 16
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-<<<<<<< HEAD
 DOWNLOAD_DELAY = 0.5
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
-=======
-DOWNLOAD_DELAY = 1
-# The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
-#CONCURRENT_REQUESTS_PER_IP = 16
->>>>>>> lesson_7
 
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = True
 
 # Disable Telnet Console (enabled by default)
-<<<<<<< HEAD
 # TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
@@ -74,7 +63,6 @@ COOKIES_ENABLED = True
 # EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
 # }
-=======
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
@@ -100,22 +88,16 @@ COOKIES_ENABLED = True
 #EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
 #}
->>>>>>> lesson_7
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-<<<<<<< HEAD
     'data_img.pipelines.DataImgPipeline': 300,
     'data_img.pipelines.LeroyPhotosPipeline': 200
-=======
-   'data_img.pipelines.DataImgPipeline': 300,
->>>>>>> lesson_7
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
-<<<<<<< HEAD
 # AUTOTHROTTLE_ENABLED = True
 # The initial download delay
 # AUTOTHROTTLE_START_DELAY = 5
@@ -134,7 +116,6 @@ ITEM_PIPELINES = {
 # HTTPCACHE_DIR = 'httpcache'
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-=======
 #AUTOTHROTTLE_ENABLED = True
 # The initial download delay
 #AUTOTHROTTLE_START_DELAY = 5
@@ -153,4 +134,3 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
->>>>>>> lesson_7
