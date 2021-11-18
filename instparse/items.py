@@ -11,3 +11,4 @@ class InstparseItem(scrapy.Item):
     user_id = scrapy.Field()
     username = scrapy.Field()
     photo = scrapy.Field()
+    user_type = scrapy.Field()

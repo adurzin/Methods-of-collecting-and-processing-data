@@ -2,8 +2,6 @@ import scrapy
 from scrapy.http import HtmlResponse
 import re
 import json
-from urllib.parse import urlencode
-from copy import deepcopy
 from instparse.items import InstparseItem
 
 
@@ -12,9 +10,9 @@ class InstagramSpider(scrapy.Spider):
     allowed_domains = ['instagram.com']
     start_urls = ['https://www.instagram.com/']
     inst_login_link = "https://www.instagram.com/accounts/login/ajax/"
-    user_name = "_aleks_qwerty_"
-    password = "#PWD_INSTAGRAM_BROWSER:10:1637146935:Ab1QAFNlvAm0NU3oQDbkIoaPaF5/t7gZsa01JsuqtQ6v7bIiy6hbomH" \
-               "+CCVFOnNcRmYFLdS7iFR/ayl+iJ8UiBif/CrNr/fVriKxPO2waNdpVG6ipyt4jpSyor+DMMvSJ8AyR6mH968okhbl"
+    user_name = "Onliskill_udm"
+    password = "#PWD_INSTAGRAM_BROWSER:10:1637258985:AchQAN88QIW9ZlZziJcXfvU/Yk1zHgjLW6vSm3ed/PqY8kxHVUAmn5I/" \
+               "qBPFVZxRO4PnTEAFnXHXWK5AZqkqgnXIObvoRj7T44Bc1f/9HeAux7Zf/E+4bwCN52JzL1HOCYjSbrKRB2zUq6qm67og"
     user_for_parse = "ai_machine_learning"
     followers_url = 'https://i.instagram.com/api/v1/friendships/'
 
@@ -41,32 +39,59 @@ class InstagramSpider(scrapy.Spider):
     def user_parse(self, response: HtmlResponse, username):
         user_id = self.fetch_user_id(response.text, username)
         url_followers = f'{self.followers_url}{user_id}/followers/?count=12&search_surface=follow_list_page'
+        url_following = f'{self.followers_url}{user_id}/following/?count=12'
 
         yield response.follow(url_followers,
                               callback=self.user_followers_pass,
                               cb_kwargs={'username': username,
-                                         # 'variables': deepcopy(variables),
                                          'user_id': user_id},
                               headers={'User-Agent': 'Instagram 155.0.0.37.107'})
 
+        yield response.follow(url_following,
+                              callback=self.user_following_pass,
+                              cb_kwargs={'username': username,
+                                         'user_id': user_id},
+                              headers={'User-Agent': 'Instagram 155.0.0.37.107'})
+
+    def user_following_pass(self, response: HtmlResponse, username, user_id):
+        j_data = response.json()
+        if j_data.get('next_max_id'):
+            max_id = j_data.get('next_max_id')
+            url_following = f'{self.followers_url}{user_id}/following/?count=12&max_id={max_id}'
+
+            yield response.follow(url_following,
+                                  callback=self.user_following_pass,
+                                  cb_kwargs={'username': username,
+                                             'user_id': user_id},
+                                  headers={'User-Agent': 'Instagram 155.0.0.37.107'})
+        users = j_data.get('users')
+        for user in users:
+            item = InstparseItem(
+                user_id=user.get('pk'),
+                username=user.get('username'),
+                photo=user.get('profile_pic_url'),
+                user_type='following'
+            )
+            yield item
+
     def user_followers_pass(self, response: HtmlResponse, username, user_id):
         j_data = response.json()
-        page_info = j_data.get('users').get('user').get('edge_owner_to_timeline_media').get('page_info')
-        if page_info.get('has_next_page'):
+        if j_data.get('next_max_id'):
             max_id = j_data.get('next_max_id')
             url_followers = f'{self.followers_url}/followers/?count=12&max_id={max_id}&search_surface=follow_list_page'
 
             yield response.follow(url_followers,
                                   callback=self.user_followers_pass,
                                   cb_kwargs={'username': username,
-                                             # 'variables': deepcopy(variables)
-                                             'user_id': user_id})
+                                             'user_id': user_id},
+                                  headers={'User-Agent': 'Instagram 155.0.0.37.107'})
         users = j_data.get('users')
         for user in users:
             item = InstparseItem(
                 user_id=user.get('pk'),
                 username=user.get('username'),
-                photo=user.get('profile_pic_url')
+                photo=user.get('profile_pic_url'),
+                user_type='follower'
             )
             yield item
 
