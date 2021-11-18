@@ -80,7 +80,7 @@ class InstagramSpider(scrapy.Spider):
         j_data = response.json()
         if j_data.get('next_max_id'):
             max_id = j_data.get('next_max_id')
-            url_followers = f'{self.followers_url}/followers/?count=12&max_id={max_id}&search_surface=follow_list_page'
+            url_followers = f'{self.followers_url}{user_id}/followers/?count=12&max_id={max_id}&search_surface=follow_list_page'
 
             yield response.follow(url_followers,
                                   callback=self.user_followers_pass,

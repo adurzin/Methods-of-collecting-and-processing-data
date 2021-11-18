@@ -9,5 +9,5 @@ class InstparsePipeline:
 
     def process_item(self, item, spider):
         collection = self.mongo_base[item['account']]
-        collection.update_one({'user_id': item['user_id']}, {'$set': item}, upsert=True)
+        collection.update_one({'user_id': item['user_id'], 'user_type': item['user_type']}, {'$set': item}, upsert=True)
         return item
