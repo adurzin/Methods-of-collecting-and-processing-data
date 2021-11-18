@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3617043e-d4cd-4502-b8fe-c49dd00698e0" name="Changes" comment="213">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instparse/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/instparse/items.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instparse/spiders/instagram.py" beforeDir="false" afterPath="$PROJECT_DIR$/instparse/spiders/instagram.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instparse/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/instparse/pipelines.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,17 +125,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/instparse/pipelines.py</url>
-          <line>17</line>
+          <line>10</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/instparse/pipelines.py</url>
-          <line>18</line>
+          <line>11</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/instparse/pipelines.py</url>
-          <line>19</line>
+          <line>12</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
