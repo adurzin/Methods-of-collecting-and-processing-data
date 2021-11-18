@@ -8,6 +8,6 @@ class InstparsePipeline:
         self.mongo_base = client['instagram']
 
     def process_item(self, item, spider):
-        collection = self.mongo_base[item['user_type']]
-        collection.update_one({'_id': item['_id']}, {'$set': item}, upsert=True)
+        collection = self.mongo_base[item['account']]
+        collection.update_one({'user_id': item['user_id']}, {'$set': item}, upsert=True)
         return item
