@@ -7,6 +7,7 @@ import scrapy
 
 
 class InstparseItem(scrapy.Item):
+    account = scrapy.Field()
     _id = scrapy.Field()
     user_id = scrapy.Field()
     username = scrapy.Field()
