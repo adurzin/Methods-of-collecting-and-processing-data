@@ -10,9 +10,9 @@ class InstagramSpider(scrapy.Spider):
     allowed_domains = ['instagram.com']
     start_urls = ['https://www.instagram.com/']
     inst_login_link = "https://www.instagram.com/accounts/login/ajax/"
-    user_name = "_alekskek_"
-    password = "#PWD_INSTAGRAM_BROWSER:10:1637262838:AUpQAF3p5eN/+wadHJ/A4H720kHk0Dzp39ZGr+9wUeH7HSRbS8DBRIYjvP" \
-               "mxlnS2RL853kT8aEoqjyupRPIMrFGUOpsjT/GO2KYXny9FxMEMHk8RhSPRbLJQiLVxiHYg5Pmkq2GNM5TLF+t6"
+    user_name = "Onliskill_udm"
+    password = "#PWD_INSTAGRAM_BROWSER:10:1637322895:AUpQAC4xOC+1ROfSKqHOJkqPWd6uVwKFyl0J7UhLEOuG2SUCo3HZfR6RAQyXu6nU" \
+               "JuvifqmT8c75pelc5uFIw15HkSyhaF31Km9dmcG3u35ogb0CDbSWVinpWRizNkgILlCUxIQn5amUjeZFNs5t"
     user_for_parse = ["_alekskek_", "griboochka"]
     followers_url = 'https://i.instagram.com/api/v1/friendships/'
 
