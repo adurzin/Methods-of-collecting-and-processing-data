@@ -1,14 +1,11 @@
 from pymongo import MongoClient
-from pprint import pprint
 
 
 client = MongoClient('localhost', 27017)
 db = client['instagram']
+account = 'tgc1spb'  # account name (tgc1spb, teplosetspb)
+user_type = 'following'  # following or follower
 
-user_for_query = 'tgc1spb'
-query_follow = 'follower'
-
-query = db[user_for_query].find({'user_type': query_follow})
-
-for el in query:
-    pprint(el)
+query_items = db[account].find({'user_type': user_type})
+for item in query_items:
+    print(item)
