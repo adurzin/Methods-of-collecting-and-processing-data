@@ -13,7 +13,7 @@ class InstagramSpider(scrapy.Spider):
     user_name = "Onliskill_udm"
     password = "#PWD_INSTAGRAM_BROWSER:10:1637322895:AUpQAC4xOC+1ROfSKqHOJkqPWd6uVwKFyl0J7UhLEOuG2SUCo3HZfR6RAQyXu6nU" \
                "JuvifqmT8c75pelc5uFIw15HkSyhaF31Km9dmcG3u35ogb0CDbSWVinpWRizNkgILlCUxIQn5amUjeZFNs5t"
-    user_for_parse = ["_alekskek_", "griboochka"]
+    user_for_parse = ["tgc1spb", "teplosetspb"]
     followers_url = 'https://i.instagram.com/api/v1/friendships/'
 
     def parse(self, response: HtmlResponse):
